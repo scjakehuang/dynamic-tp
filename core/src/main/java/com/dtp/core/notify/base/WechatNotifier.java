@@ -46,6 +46,8 @@ public class WechatNotifier implements Notifier {
                 log.info("DynamicTp notify, wechat send success, response: {}, request:{}",
                         response.body(), JSONUtil.toJsonStr(markdownReq));
             }
+
+//            log.info("发送企业微信告警：" + JSONUtil.toJsonStr(markdownReq));
         } catch (Exception e) {
             log.error("DynamicTp notify, wechat send failed...", e);
         }

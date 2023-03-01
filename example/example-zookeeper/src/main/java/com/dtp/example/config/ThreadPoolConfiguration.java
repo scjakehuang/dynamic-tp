@@ -48,7 +48,7 @@ public class ThreadPoolConfiguration {
      * tips: 建议直接在配置中心配置就行，不用@Bean声明
      * @return 线程池实例
      */
-    @Bean
+    /*@Bean
     public DtpExecutor ioIntensiveExecutor() {
         return ThreadPoolBuilder.newBuilder()
                 .threadPoolName("ioIntensiveExecutor")
@@ -57,7 +57,7 @@ public class ThreadPoolConfiguration {
                 .queueCapacity(2048)
                 .ioIntensive(true)
                 .buildDynamic();
-    }
+    }*/
 
     /**
      * tips: 建议直接在配置中心配置就行，不用@Bean声明

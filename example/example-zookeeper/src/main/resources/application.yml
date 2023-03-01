@@ -14,6 +14,16 @@ spring:
         config-key: dynamic-tp-zookeeper-demo-json   # json 用到
 
 
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 #logging:
 #  level:
 #    root: DEBUG

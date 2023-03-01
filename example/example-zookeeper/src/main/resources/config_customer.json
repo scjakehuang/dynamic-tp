@@ -1,0 +1,107 @@
+{
+  "enabled": true,
+  "collectorType": "logging",
+  "collectorTypes":"micrometer",
+  "monitorInterval": 5,
+  "enabledBanner": true,
+  "enabledCollect": true,
+  "configType": "json",
+  "zookeeper": {
+    "zkConnectStr": "127.0.0.1:2181",
+    "rootNode": "/configserver/dev",
+    "node": "dtp-group",
+    "config-key": "dynamic-tp-zookeeper-demo-json"
+  },
+  "platforms": [
+    {
+      "platform": "wechat",
+      "urlKey": "238bda8f-4811-4346-904e-dfee8bba6417",
+      "receivers": "645434940@qq.com"
+    }
+  ],
+  "tomcatTp": {
+    "corePoolSize": 1,
+    "maximumPoolSize": 3,
+    "keepAliveTime": 60
+  },
+  "executors": [
+    {
+      "threadPoolName": "dtpExecutor1",
+      "executorType": "common",
+      "keepAliveTime": 20,
+      "waitForTasksToCompleteOnShutdown": false,
+      "rejectedHandlerType": "DiscardOldestPolicy",
+      "queueCapacity": 10,
+      "fair": false,
+      "unit": "SECONDS",
+      "runTimeout": 300,
+      "threadNamePrefix": "t0",
+      "allowCoreThreadTimeOut": false,
+      "corePoolSize": 1,
+      "queueType": "VariableLinkedBlockingQueue",
+      "maximumPoolSize": 2,
+      "awaitTerminationSeconds": 1,
+      "preStartAllCoreThreads": true,
+      "notifyItems": [
+        {
+          "type": "capacity",
+          "enabled": true,
+          "threshold": 80,
+          "platforms": [
+            "wechat"
+          ],
+          "interval": 120
+        },
+        {
+          "type": "reject",
+          "enabled": true,
+          "platforms": [
+            "wechat"
+          ],
+          "threshold": 1,
+          "interval": 120
+        }
+      ],
+      "queueTimeout": 300
+    },
+    {
+      "threadPoolName": "dtpExecutor2",
+      "executorType": "common",
+      "keepAliveTime": 20,
+      "waitForTasksToCompleteOnShutdown": false,
+      "rejectedHandlerType": "DiscardOldestPolicy",
+      "queueCapacity": 20,
+      "fair": false,
+      "unit": "SECONDS",
+      "runTimeout": 300,
+      "threadNamePrefix": "t1",
+      "allowCoreThreadTimeOut": false,
+      "corePoolSize": 2,
+      "queueType": "VariableLinkedBlockingQueue",
+      "maximumPoolSize": 4,
+      "awaitTerminationSeconds": 1,
+      "preStartAllCoreThreads": true,
+      "notifyItems": [
+        {
+          "type": "capacity",
+          "enabled": true,
+          "threshold": 80,
+          "platforms": [
+            "wechat"
+          ],
+          "interval": 120
+        },
+        {
+          "type": "reject",
+          "enabled": true,
+          "platforms": [
+            "wechat"
+          ],
+          "threshold": 1,
+          "interval": 120
+        }
+      ],
+      "queueTimeout": 300
+    }
+  ]
+}
